@@ -1,6 +1,6 @@
 APP=$(shell basename $(shell git remote get-url origin))
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
-REGISTRY=slak-ops
+REGISTRY=slakops
 TARGETOS=linux 
 TARGETARCH=arm64
 
