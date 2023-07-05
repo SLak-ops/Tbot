@@ -1,12 +1,22 @@
 import shutil
 import os
 from pathlib import Path
+import importlib
 import subprocess
-packages = ['pre-commit']
 
-# Виконати команду pip для кожного пакета
-for package in packages:
-    subprocess.check_call(['pip', 'install', package])
+def install_package(package_name):
+    try:
+        importlib.import_module(package_name)
+        print(f"Package '{package_name}' is already installed.")
+    except ImportError:
+        subprocess.check_call(['pip', 'install', package_name])
+        print(f"Package '{package_name}' has been installed.")
+
+# Пакет, який потрібно встановити
+package_name = 'pre-commit'
+
+# Виконати встановлення пакета тільки у випадку його відсутності
+install_package(package_name)
 
 file_path = 'pre-commit/pre-commit'
 
